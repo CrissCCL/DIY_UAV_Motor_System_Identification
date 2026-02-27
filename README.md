@@ -1,6 +1,5 @@
 # 🛩️ DIY UAV Motor System Identification (Rotational Model Component)
 ### Brushless Motor Time Constant (τ) Estimation via Acoustic Spectral Ridge Tracking  
-**CrissCCL – Applied Control & Embedded Engineering**
 
 <!-- Badges -->
 ![MATLAB](https://img.shields.io/badge/MATLAB-R2020%2B-orange)
@@ -54,7 +53,9 @@ $$
 
 ## 🔬 Experimental Hardware Setup
 
-![Motor Bench Setup](docs/images/motor_bench_setup.jpg)
+<p align="center">
+  <img  alt="setup" src="https://github.com/user-attachments/assets/364b092d-533a-4b34-ba91-2b2bc54d2ed4" width="700">
+</p>
 
 > Test performed with 1045 propeller installed to capture real aerodynamic load dynamics.
 
