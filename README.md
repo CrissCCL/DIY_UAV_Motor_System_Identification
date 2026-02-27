@@ -241,6 +241,48 @@ $$
 This defines a safe inner rate-loop bandwidth region.
 
 
+## 📈 Frequency Domain Characteristics
+
+The identified motor lag introduces an additional pole at:
+
+ω = 5.88 rad/s
+
+This produces:
+
+- −20 dB/dec slope transition
+- Additional phase drop approaching −90°
+- Bandwidth constraint for inner rate loops
+
+The combined plant (integrator + motor pole) yields:
+
+−40 dB/dec slope after the motor pole frequency.
+
+## 📈 Frequency Domain Characteristics (Bode)
+
+The identified motor lag introduces an additional pole at:
+
+\[
+\omega_m = \frac{1}{\tau} = 5.88 \text{ rad/s}
+\]
+
+This limits achievable inner rate-loop bandwidth and reduces phase margin.
+
+### Roll (Gp)
+<p align="center">
+  <img alt="bode_Gp_roll" src="https://github.com/user-attachments/assets/02c9060c-1b6c-4651-bace-3ba73acf38d4" width="500">
+</p>
+
+### Pitch (Gq)
+<p align="center">
+  <img alt="bode_Gq_pitch" src="https://github.com/user-attachments/assets/a412ff82-1008-40d3-8fad-b0a1113eae88" width="500">
+</p>
+
+### Yaw (Gr)
+<p align="center">
+  <img alt="bode_Gp_roll" src="https://github.com/user-attachments/assets/02c9060c-1b6c-4651-bace-3ba73acf38d4" width="500">
+</p>
+
+
 ## 📋 Numerical Summary (Identified Case)
 
 | Parameter | Value |
@@ -285,7 +327,7 @@ run("record_audio.m");
 ```matlab
 run("process_audio_tau.m");
 ```
-🔗 Integration with Flight Controller
+## 🔗 Integration with Flight Controller
 
 The identified motor lag model is directly integrated into:
 
