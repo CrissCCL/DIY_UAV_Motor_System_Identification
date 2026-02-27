@@ -238,7 +238,6 @@ $$
 
 This defines a safe inner rate-loop bandwidth region.
 
----
 
 ## 📋 Numerical Summary (Identified Case)
 
