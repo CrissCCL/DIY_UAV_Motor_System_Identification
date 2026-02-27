@@ -54,7 +54,7 @@ $$
 ## 🔬 Experimental Hardware Setup
 
 <p align="center">
-  <img  alt="setup" src="https://github.com/user-attachments/assets/364b092d-533a-4b34-ba91-2b2bc54d2ed4" width="700">
+  <img  alt="setup" src="https://github.com/user-attachments/assets/9af06680-16d7-467a-aefb-86ba5fca9377" width="500">
 </p>
 
 > Test performed with 1045 propeller installed to capture real aerodynamic load dynamics.
