@@ -11,101 +11,160 @@
 ![Status](https://img.shields.io/badge/Status-Validated%20Bench%20Test-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-black)
 
+---
 
 ## 📌 Role Within the UAV Rotational Model
 
 This repository contributes to the **rotational dynamic modeling of the UAV**.
 
-Specifically, it identifies the **motor–ESC dynamic lag (τ)**, which is a critical component of the propulsion subsystem and directly affects:
+It experimentally identifies the **motor–ESC dynamic lag (τ)**, which directly affects:
 
-- Roll, pitch, and yaw rate response
-- Inner rate loop bandwidth
-- Phase margin and stability
-- Transient torque generation
+- Roll, pitch and yaw rate response  
+- Inner rate loop bandwidth  
+- Phase margin and stability  
+- Transient torque generation  
 
-The motor time constant becomes part of the rotational plant model:
+The motor dynamics are modeled as:
 
 $$
 G_{motor}(s) = \frac{1}{\tau s + 1}
 $$
 
-## 📂 Contents
-- `/Scripts` → New Version schematic, Gerbers and BOM+POS for PCBA.
-- `/exp_motor` → C code for Arduino/Teensy.
+---
 
-## 🔎 Key Figures
+## 📂 Repository Structure
 
-### Spectrogram + Ridge Tracking
-![Spectrogram Ridge](docs/images/cover_spectrogram_ridge.png)
-
-### Step Window + Time Constant Estimation
-![Tau Fit](docs/images/cover_tau_fit.png)
+- `/Scripts` → MATLAB acquisition and processing scripts  
+- `/exp_motor` → Teensy PWM step generator firmware  
+- `/experiments` → Structured experiment datasets  
+- `/docs/images` → Figures used in documentation  
 
 
-## 🧠 Modeling Assumption
+# 🔬 System Identification
 
-The dominant acoustic frequency is assumed proportional to rotor angular speed:
+## 🛠 Identification Pipeline
 
-$$
-f(t) \propto \omega(t)
-$$
-
-Under a throttle step:
-
-$$
-f(t)=f_\infty-(f_\infty-f_0)e^{-(t-t_0)/\tau}
-$$
-
-Two estimation methods are implemented:
-
-- **Tau63 (63% crossing method)**
-- **Grid-based Least Squares exponential fit**
-
-
-## 🛠 System Identification Pipeline
-
-1. Controlled throttle step (Teensy)
+1. Deterministic throttle step (Teensy)
 2. Audio acquisition in MATLAB (44.1 kHz)
 3. DC removal and zero-phase low-pass filtering
 4. STFT spectrogram computation
-5. Band-limited ridge tracking
+5. Band-limited ridge tracking (60–450 Hz)
 6. Median + moving average smoothing
-7. Time constant estimation
+7. Time constant estimation (Tau63 + LS fit)
 
-## 📊 Relevance to UAV Rotational Dynamics
 
-The complete rotational axis model can be approximated as:
+## 🔎 Key Figures
 
-$$
-G_{axis}(s) = \frac{K}{(\tau s + 1)(J s)}
-$$
+### RAW vs FILTERED Spectrogram
+<table>
+  <tr>
+    <td align="center">
+      <img alt="spectrogram raw" src="https://github.com/user-attachments/assets/98d49158-bdcd-41ae-9b5f-1fa50abe36e3" width="520"><br>
+      <sub>RAW Spectrogram</sub>
+    </td>
+    <td align="center">
+      <img alt="spectrogram filtered" src="https://github.com/user-attachments/assets/b16b75b0-94f3-4cf7-a909-e504bda3b89e" width="520"><br>
+      <sub>Filtered spectrogram</sub>
+    </td>
+  </tr>
+</table>
 
-Where:
-- $$J$$ = axis inertia
-- $$\tau$$ = motor lag
-- $$K$$ = control effectiveness
+### Tau Estimation Window
 
-The motor time constant introduces:
+<p align="center">
+  <img  alt="tau_est" src="https://github.com/user-attachments/assets/9ebe59d6-c62a-47a2-9ac0-8a4b2d4fc218" width="700">
+</p>
 
-- Additional phase lag
-- Bandwidth limitation
-- Torque response delay
+## 📊 Power Spectral Density (Harmonic Analysis)
 
-A practical engineering guideline:
+Welch PSD is computed for:
 
-$$
-\omega_{BW} \ll \frac{1}{\tau}
-$$
-to preserve stability margins.
+- RAW signal  
+- Filtered signal  
 
-## 📊 Numerical Example (Identified Case)
+This validates:
 
-For the identified motor time constant:
+- Fundamental frequency dominance  
+- Harmonic structure visibility  
+- Filtering effectiveness  
+- Proper tracking band selection  
+
+PSD plot example:
+
+<p align="center">
+  <img  alt="psd" src="https://github.com/user-attachments/assets/379020fb-0599-47d7-9f66-68b38aa587e7" width="700">
+</p>
+
+# 🧮 Identified Rotational Axis Models
+
+Using:
+
 $$
 \tau = 0.17 \text{ s}
 $$
 
-The motor pole is located at:
+The identified continuous-time axis models are:
+
+### Roll (p-axis)
+
+$$
+G_p(s) = \frac{45.92}{0.17 s^2 + s}
+$$
+
+### Pitch (q-axis)
+
+$$
+G_q(s) = \frac{56.39}{0.17 s^2 + s}
+$$
+
+### Yaw (r-axis)
+
+$$
+G_r(s) = \frac{2.232}{0.17 s^2 + s}
+$$
+
+Factored form:
+
+$$
+G(s) = \frac{K/J}{s(\tau s + 1)}
+$$
+
+This explicitly shows:
+
+- Integrator from rigid-body rotational dynamics  
+- First-order lag from propulsion system  
+
+---
+
+# 📐 Physical Interpretation
+
+Denominator:
+
+$$
+s(0.17 s + 1)
+$$
+
+represents:
+
+- \( s \) → rotational inertia  
+- \( 0.17 s + 1 \) → motor–ESC lag  
+
+Numerator constants (45.92, 56.39, 2.232) correspond to:
+
+$$
+\frac{K}{J}
+$$
+
+where:
+
+- \( K \) = torque per PWM effectiveness  
+- \( J \) = axis inertia  
+
+
+
+# 📊 Bandwidth Limitation Due to Motor Lag
+
+Motor pole:
 
 $$
 \omega_m = \frac{1}{\tau} = 5.88 \text{ rad/s}
@@ -117,9 +176,7 @@ $$
 f_m \approx 0.94 \text{ Hz}
 $$
 
-### Practical Bandwidth Guideline
-
-To maintain sufficient phase margin:
+### Conservative Engineering Rule
 
 $$
 \omega_{BW} \lesssim \frac{1}{2\tau}
@@ -129,44 +186,48 @@ $$
 \omega_{BW} \lesssim 2.9 \text{ rad/s}
 $$
 
-This provides a conservative design bound for inner rate loop tuning.
+This defines a safe inner rate-loop bandwidth region.
 
-Higher bandwidth values are possible but require careful gain selection and derivative filtering.
+---
 
+# 🎯 Engineering Impact
 
-## 📈 Engineering Implications
+Including τ in the plant model ensures:
 
-Including τ in the plant model enables:
+- Realistic simulation  
+- Correct phase margin prediction  
+- Controlled bandwidth selection  
+- Reduced oscillatory risk  
+- Physically consistent tuning  
 
-- Realistic controller tuning
-- Accurate simulation of transient behavior
-- Conservative and stable bandwidth selection
-- Improved feedforward compensation design
+Ignoring motor lag results in:
 
-Ignoring motor lag leads to:
+- Overestimated bandwidth  
+- Reduced stability margin  
+- Instability in real flight despite stable simulation  
 
-- Overestimated achievable bandwidth
-- Reduced phase margin
-- Oscillatory response in real flight
+---
 
 ## ▶️ Quick Start
 
 ### Record Audio
 ```matlab
-01_record_audio.m
+run("record_audio.m");
 ```
 
-## Process and Estimate τ
+### Process and Estimate τ
 ```matlab
-02_process_audio_tau.m
+run("process_audio_tau.m");
 ```
-##🔗 Integration with Flight Controller
+🔗 Integration with Flight Controller
 
 The identified motor lag model is directly integrated into:
 
 - Rate loop tuning
-- Simulation environment
+- Simulation plant model
 - Embedded discrete-time controller design
+
+
 
 ## 🤝 Support projects
  Support me on Patreon [https://www.patreon.com/c/CrissCCL](https://www.patreon.com/c/CrissCCL)
