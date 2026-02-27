@@ -261,9 +261,9 @@ The combined plant (integrator + motor pole) yields:
 
 The identified motor lag introduces an additional pole at:
 
-\[
+$$
 \omega_m = \frac{1}{\tau} = 5.88 \text{ rad/s}
-\]
+$$
 
 This limits achievable inner rate-loop bandwidth and reduces phase margin.
 
