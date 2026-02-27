@@ -12,8 +12,6 @@
 ![License](https://img.shields.io/badge/License-MIT-black)
 
 
----
-
 ## 🔗 Part of the Main UAV Project
 
 This repository is a dedicated **propulsion dynamics identification module** for the complete DIY UAV platform.
@@ -52,6 +50,41 @@ $$
 
 - `/Scripts` → MATLAB acquisition and processing scripts  
 - `/exp_motor` → Teensy PWM step generator firmware  
+
+
+## 🔬 Experimental Hardware Setup
+
+The motor identification experiment was performed using the following hardware:
+
+### 🎤 Acoustic Sensor
+- **Microphone:** HyperX QuadCast (USB condenser microphone)
+- Fixed distance positioning
+- Ambient noise controlled environment
+
+### ⚙️ Propulsion System
+- **Brushless Motor:** 2212 – 920 kV
+- **ESC:** 30A
+- Hover reference PWM: 1400 µs (≈ 40% RC throttle)
+- Step excitation: 1200 → 1400 µs
+
+### 🧠 Step Generator
+- **Controller:** Teensy (PWM deterministic step generator)
+- No hardware logging (time reference defined in MATLAB)
+
+
+### 📐 Identified Result
+
+Motor time constant:
+
+$$
+\tau = 0.17 \text{ s}
+$$
+
+This value is integrated into the rotational axis models:
+
+$$
+G_p(s), \quad G_q(s), \quad G_r(s)
+$$
 
 # 🔬 System Identification
 
@@ -158,8 +191,8 @@ $$
 
 represents:
 
-- \( s \) → rotational inertia  
-- \( 0.17 s + 1 \) → motor–ESC lag  
+- $$s$$ → rotational inertia  
+-$$(0.17 s + 1)$$→ motor–ESC lag  
 
 Numerator constants (45.92, 56.39, 2.232) correspond to:
 
@@ -169,8 +202,8 @@ $$
 
 where:
 
-- \( K \) = torque per PWM effectiveness  
-- \( J \) = axis inertia  
+- $$K=$ torque per PWM effectiveness  
+- $$J=$$ axis inertia  
 
 
 
@@ -200,6 +233,23 @@ $$
 
 This defines a safe inner rate-loop bandwidth region.
 
+---
+
+## 📋 Numerical Summary (Identified Case)
+
+| Parameter | Value |
+|------------|--------|
+| Motor model | 2212 – 920 kV |
+| ESC | 30A |
+| Hover PWM | 1400 µs |
+| Identified τ | 0.17 s |
+| Motor pole | 5.88 rad/s |
+| Equivalent frequency | 0.94 Hz |
+| Conservative BW limit | < 2.9 rad/s |
+
+This summary defines the propulsion dynamic constraint used in the UAV rotational model.
+
+This propulsion identification module directly supports the design of the inner rate control loops implemented in the main DIY_UAV project.
 
 # 🎯 Engineering Impact
 
