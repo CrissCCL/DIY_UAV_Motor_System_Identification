@@ -57,7 +57,7 @@ $$
   <img  alt="setup" src="https://github.com/user-attachments/assets/9af06680-16d7-467a-aefb-86ba5fca9377" width="500">
 </p>
 
-> Test performed with 1045 propeller installed to capture real aerodynamic load dynamics.
+> Test performed with 9450 propeller installed to capture real aerodynamic load dynamics.
 > Identification includes aerodynamic loading effects due to installed propeller.
 
 Brushless motor mounted on bench test configuration during acoustic identification.
@@ -257,8 +257,6 @@ The combined plant (integrator + motor pole) yields:
 
 −40 dB/dec slope after the motor pole frequency.
 
-## 📈 Frequency Domain Characteristics (Bode)
-
 The identified motor lag introduces an additional pole at:
 
 $$
@@ -284,6 +282,8 @@ This limits achievable inner rate-loop bandwidth and reduces phase margin.
       <img alt="bode_Gr_yaw" src="https://github.com/user-attachments/assets/b3e0ff04-674d-44f3-99c9-abea000a95ea" width="450">
     </td>
   </tr>
+    </tr>
+</table>
 
 ## 📋 Numerical Summary (Identified Case)
 
