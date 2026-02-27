@@ -56,6 +56,8 @@ $$
 
 ![Motor Bench Setup](docs/images/motor_bench_setup.jpg)
 
+> Test performed with 1045 propeller installed to capture real aerodynamic load dynamics.
+
 Brushless motor mounted on bench test configuration during acoustic identification.
 Microphone positioned at fixed distance to ensure repeatability.
 
