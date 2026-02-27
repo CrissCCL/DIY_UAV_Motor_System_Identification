@@ -54,7 +54,10 @@ $$
 
 ## 🔬 Experimental Hardware Setup
 
-The motor identification experiment was performed using the following hardware:
+![Motor Bench Setup](docs/images/motor_bench_setup.jpg)
+
+Brushless motor mounted on bench test configuration during acoustic identification.
+Microphone positioned at fixed distance to ensure repeatability.
 
 ### 🎤 Acoustic Sensor
 - **Microphone:** HyperX QuadCast (USB condenser microphone)
