@@ -267,21 +267,24 @@ The identified motor lag introduces an additional pole at:
 
 This limits achievable inner rate-loop bandwidth and reduces phase margin.
 
-### Roll (Gp)
-<p align="center">
-  <img alt="bode_Gp_roll" src="https://github.com/user-attachments/assets/02c9060c-1b6c-4651-bace-3ba73acf38d4" width="500">
-</p>
-
-### Pitch (Gq)
-<p align="center">
-  <img alt="bode_Gq_pitch" src="https://github.com/user-attachments/assets/a412ff82-1008-40d3-8fad-b0a1113eae88" width="500">
-</p>
-
-### Yaw (Gr)
-<p align="center">
-  <img alt="bode_Gp_roll" src="https://github.com/user-attachments/assets/02c9060c-1b6c-4651-bace-3ba73acf38d4" width="500">
-</p>
-
+<table>
+  <tr>
+    <td align="center">
+      <b>Roll (Gp)</b><br>
+      <img alt="bode_Gp_roll" src="https://github.com/user-attachments/assets/02c9060c-1b6c-4651-bace-3ba73acf38d4" width="450">
+    </td>
+    <td align="center">
+      <b>Pitch (Gq)</b><br>
+      <img alt="bode_Gq_pitch" src="https://github.com/user-attachments/assets/a412ff82-1008-40d3-8fad-b0a1113eae88" width="450">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">
+      <b>Yaw (Gr)</b><br>
+      <img alt="bode_Gr_yaw" src="URL_YAW_IMAGE_AQUI" width="450">
+    </td>
+  </tr>
+</table>
 
 ## 📋 Numerical Summary (Identified Case)
 
