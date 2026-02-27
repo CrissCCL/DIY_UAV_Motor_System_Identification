@@ -58,6 +58,7 @@ $$
 </p>
 
 > Test performed with 1045 propeller installed to capture real aerodynamic load dynamics.
+> Identification includes aerodynamic loading effects due to installed propeller.
 
 Brushless motor mounted on bench test configuration during acoustic identification.
 Microphone positioned at fixed distance to ensure repeatability.
@@ -181,6 +182,8 @@ $$
 G(s) = \frac{K/J}{s(\tau s + 1)}
 $$
 
+These models represent the complete rotational plant used for rate loop design in the main DIY_UAV project.
+
 This explicitly shows:
 
 - Integrator from rigid-body rotational dynamics  
@@ -200,11 +203,7 @@ represents:
 - $$s$$ → rotational inertia  
 - $$(0.17 s + 1)$$ → motor–ESC lag  
 
-Numerator constants (45.92, 56.39, 2.232) correspond to:
-
-$$
-\frac{K}{J}
-$$
+Numerator constants (45.92, 56.39, 2.232) correspond to the effective torque-to-inertia ratio $$(K/J)$$ for each rotational axis.
 
 where:
 
@@ -214,6 +213,8 @@ where:
 
 
 # 📊 Bandwidth Limitation Due to Motor Lag
+
+This motor lag must also be considered when discretizing the plant model for embedded implementation (Ts = control loop sampling time).
 
 Motor pole:
 
