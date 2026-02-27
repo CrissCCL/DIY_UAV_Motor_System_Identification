@@ -30,9 +30,8 @@ G_{motor}(s) = \frac{1}{\tau s + 1}
 $$
 
 ## 📂 Contents
-- `/HardwareV2` → New Version schematic, Gerbers and BOM+POS for PCBA.
-- `/Hardware` → schematic, PCB, Gerbers.
-- `/control_temp_LC` → C code for Arduino.
+- `/Scripts` → New Version schematic, Gerbers and BOM+POS for PCBA.
+- `/exp_motor` → C code for Arduino/Teensy.
 
 ## 🔎 Key Figures
 
