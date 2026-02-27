@@ -52,9 +52,6 @@ $$
 
 - `/Scripts` → MATLAB acquisition and processing scripts  
 - `/exp_motor` → Teensy PWM step generator firmware  
-- `/experiments` → Structured experiment datasets  
-- `/docs/images` → Figures used in documentation  
-
 
 # 🔬 System Identification
 
