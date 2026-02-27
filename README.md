@@ -11,7 +11,6 @@
 ![Status](https://img.shields.io/badge/Status-Validated%20Bench%20Test-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-black)
 
----
 
 ## 📌 Role Within the UAV Rotational Model
 
@@ -30,7 +29,6 @@ $$
 G_{motor}(s) = \frac{1}{\tau s + 1}
 $$
 
----
 
 ## 📂 Repository Structure
 
@@ -134,7 +132,6 @@ This explicitly shows:
 - Integrator from rigid-body rotational dynamics  
 - First-order lag from propulsion system  
 
----
 
 # 📐 Physical Interpretation
 
@@ -188,7 +185,6 @@ $$
 
 This defines a safe inner rate-loop bandwidth region.
 
----
 
 # 🎯 Engineering Impact
 
@@ -206,7 +202,6 @@ Ignoring motor lag results in:
 - Reduced stability margin  
 - Instability in real flight despite stable simulation  
 
----
 
 ## ▶️ Quick Start
 
