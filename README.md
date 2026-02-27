@@ -12,6 +12,24 @@
 ![License](https://img.shields.io/badge/License-MIT-black)
 
 
+---
+
+## 🔗 Part of the Main UAV Project
+
+This repository is a dedicated **propulsion dynamics identification module** for the complete DIY UAV platform.
+
+It is a submodule of the main UAV project:
+
+👉 **DIY_UAV (main repository)**  
+🔗 https://github.com/CrissCCL/DIY_UAV
+
+Within the full UAV architecture, this module provides:
+
+- Experimental motor–ESC lag estimation (τ)
+- Rotational plant modeling component
+- Basis for rate loop bandwidth design
+- Realistic simulation plant integration
+
 ## 📌 Role Within the UAV Rotational Model
 
 This repository contributes to the **rotational dynamic modeling of the UAV**.
