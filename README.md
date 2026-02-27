@@ -192,7 +192,7 @@ $$
 represents:
 
 - $$s$$ → rotational inertia  
--$$(0.17 s + 1)$$→ motor–ESC lag  
+- $$(0.17 s + 1)$$ → motor–ESC lag  
 
 Numerator constants (45.92, 56.39, 2.232) correspond to:
 
@@ -202,7 +202,7 @@ $$
 
 where:
 
-- $$K=$ torque per PWM effectiveness  
+- $$K=$$ torque per PWM effectiveness  
 - $$J=$$ axis inertia  
 
 
