@@ -281,10 +281,9 @@ This limits achievable inner rate-loop bandwidth and reduces phase margin.
   <tr>
     <td align="center" colspan="2">
       <b>Yaw (Gr)</b><br>
-      <img alt="bode_Gr_yaw" src="URL_YAW_IMAGE_AQUI" width="450">
+      <img alt="bode_Gr_yaw" src="https://github.com/user-attachments/assets/b3e0ff04-674d-44f3-99c9-abea000a95ea" width="450">
     </td>
   </tr>
-</table>
 
 ## 📋 Numerical Summary (Identified Case)
 
