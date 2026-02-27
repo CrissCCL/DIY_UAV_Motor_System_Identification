@@ -154,14 +154,12 @@ Ignoring motor lag leads to:
 
 ### Record Audio
 ```matlab
-run("matlab/01_record_audio.m");
-save("matlab/data/sonido_motor_1.mat","x");
+01_record_audio.m
 ```
 
 ## Process and Estimate τ
 ```matlab
-run("matlab/02_process_audio_tau.m");
-run("matlab/03_export_results.m");
+02_process_audio_tau.m
 ```
 ##🔗 Integration with Flight Controller
 
