@@ -93,6 +93,10 @@ $$
 G_p(s), \quad G_q(s), \quad G_r(s)
 $$
 
+> **Note**
+> The presented identification corresponds to an initial experimental estimate obtained during early propulsion testing.  
+> Additional experiments with new ESC hardware are planned to further refine the propulsion dynamic model.
+
 # 🔬 System Identification
 
 ## 🛠 Identification Pipeline
