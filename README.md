@@ -94,8 +94,8 @@ G_p(s), \quad G_q(s), \quad G_r(s)
 $$
 
 > **Note**
-> The presented identification corresponds to an initial experimental estimate obtained during early propulsion testing.  
-> Additional experiments with new ESC hardware are planned to further refine the propulsion dynamic model.
+> This identification represents an initial experimental estimate of the propulsion dynamics.
+> Additional tests with new ESC hardware will be performed to refine the motor–ESC dynamic model.
 
 # 🔬 System Identification
 
